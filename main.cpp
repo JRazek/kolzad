@@ -87,16 +87,17 @@ struct SegmentTree{
     }
 };
 int main() {
+    std::ios_base::sync_with_stdio(false);
     int length;
     int queries;
-    scanf("%d", &length);
-    scanf("%d", &queries);
+    cin >> length;
+    cin >> queries;
     SegmentTree sg = SegmentTree(length);
     for(int i = 0; i < queries; i ++){
         int min, max, colour;
-        scanf("%d", &min);
-        scanf("%d", &max);
-        scanf("%d", &colour);
+        cin >> min;
+        cin >> max;
+        cin >> colour;
         Range * r = new Range(--min, --max);
         sg.propagate(r, --colour);
         delete r;
@@ -104,7 +105,7 @@ int main() {
 
     int sum = 0;
     for(int i = 0; i < length; i ++){
-        sum += sg.isGreen(i);
+        sum += sg.isGreen(i);//
     }
     cout<<sum;
     return 0;
